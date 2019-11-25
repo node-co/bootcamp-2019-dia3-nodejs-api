@@ -46,6 +46,15 @@ app.get("/usuarios/:index", function(req, res) {
   }
 });
 
+app.delete("/usuarios/:index", function(req, res) {
+  if (usuarios[req.params.index]) {
+    usuarios.slice(req.params.index, 1);
+    res.send({ mensaje: `indice ${req.params.index} eliminado` });
+  } else {
+    res.send(`no existe usuario con index = ${req.params.index}`);
+  }
+});
+
 app.listen(port, function() {
   console.log(`Example app listening on port ${port}!`);
 });
