@@ -7,7 +7,7 @@ const port = 3001;
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-const usuarios = [
+let usuarios = [
   { nombre: "usuario0" },
   { nombre: "usuario1" },
   { nombre: "usuario2" },
@@ -48,7 +48,7 @@ app.get("/usuarios/:index", function(req, res) {
 
 app.delete("/usuarios/:index", function(req, res) {
   if (usuarios[req.params.index]) {
-    usuarios.splice(req.params.index, 1);
+    usuarios = usuarios.filter((usuario, index) => index != req.params.index);
     res.send({ mensaje: `indice ${req.params.index} eliminado` });
   } else {
     res.send(`no existe usuario con index = ${req.params.index}`);
