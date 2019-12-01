@@ -15,6 +15,14 @@ let usuarios = [
   { nombre: "usuario4" }
 ];
 
+let empleadores = [
+  { id: 0, nombre: "Almacenes Exito" },
+  { id: 1, nombre: "Centro comercial Santa Fe" },
+  { id: 2, nombre: "Carulla" },
+  { id: 3, nombre: "Jumbo" },
+  { id: 4, nombre: "D1" }
+];
+
 app.get("/", function(req, res) {
   res.send("hola soy la ruta raíz");
 });
@@ -53,6 +61,10 @@ app.delete("/usuarios/:index", function(req, res) {
   } else {
     res.send(`no existe usuario con index = ${req.params.index}`);
   }
+});
+
+app.get("/empleadores", function(req, res) {
+  res.send(empleadores);
 });
 
 app.listen(port, function() {
